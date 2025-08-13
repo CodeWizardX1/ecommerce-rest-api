@@ -14,6 +14,7 @@ import usersRouter from './src/routes/users.js';
 import productsRouter from './src/routes/products.js';
 import cartRouter from './src/routes/cart.js';
 import ordersRouter from './src/routes/orders.js';
+import checkoutRouter from './src/routes/checkout.js';
 
 const app = express();
 app.use(json());
@@ -40,6 +41,7 @@ api.use('/users', usersRouter);
 api.use('/products', productsRouter);
 api.use('/cart', cartRouter);
 api.use('/orders', ordersRouter);
+api.use('/checkout', checkoutRouter);
 
 // Debug route to confirm base is mounted
 api.get('/_whoami', (_req, res) => res.json({ base: '/api/v1', routes: ['auth','users','products','cart','orders'] }));

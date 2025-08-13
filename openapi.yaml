@@ -26,15 +26,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegisterRequest'
+              $ref: "#/components/schemas/RegisterRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '409': { description: Email already in use }
+                $ref: "#/components/schemas/User"
+        "409": { description: Email already in use }
 
   /auth/login:
     post:
@@ -45,15 +45,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginRequest'
+              $ref: "#/components/schemas/LoginRequest"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthToken'
-        '401': { description: Invalid credentials }
+                $ref: "#/components/schemas/AuthToken"
+        "401": { description: Invalid credentials }
 
   /users/me:
     get:
@@ -61,11 +61,11 @@ paths:
       summary: Get current user
       security: [{ bearerAuth: [] }]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/User' }
+              schema: { $ref: "#/components/schemas/User" }
     put:
       tags: [Users]
       summary: Update current user
@@ -75,13 +75,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserUpdate'
+              $ref: "#/components/schemas/UserUpdate"
       responses:
-        '200':
+        "200":
           description: Updated
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/User' }
+              schema: { $ref: "#/components/schemas/User" }
 
   /users/me/addresses:
     get:
@@ -89,13 +89,13 @@ paths:
       summary: List my addresses
       security: [{ bearerAuth: [] }]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
-                items: { $ref: '#/components/schemas/Address' }
+                items: { $ref: "#/components/schemas/Address" }
     post:
       tags: [Addresses]
       summary: Create address
@@ -104,13 +104,13 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/AddressCreate' }
+            schema: { $ref: "#/components/schemas/AddressCreate" }
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Address' }
+              schema: { $ref: "#/components/schemas/Address" }
 
   /users/me/addresses/{id}:
     parameters:
@@ -126,32 +126,32 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/AddressUpdate' }
+            schema: { $ref: "#/components/schemas/AddressUpdate" }
       responses:
-        '200':
+        "200":
           description: Updated
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Address' }
+              schema: { $ref: "#/components/schemas/Address" }
     delete:
       tags: [Addresses]
       summary: Delete address
       security: [{ bearerAuth: [] }]
       responses:
-        '204': { description: Deleted }
+        "204": { description: Deleted }
 
   /categories:
     get:
       tags: [Categories]
       summary: List categories
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
-                items: { $ref: '#/components/schemas/Category' }
+                items: { $ref: "#/components/schemas/Category" }
     post:
       tags: [Categories]
       summary: Create category (admin)
@@ -160,13 +160,13 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/CategoryCreate' }
+            schema: { $ref: "#/components/schemas/CategoryCreate" }
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Category' }
+              schema: { $ref: "#/components/schemas/Category" }
 
   /categories/{id}:
     parameters:
@@ -182,19 +182,19 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/CategoryUpdate' }
+            schema: { $ref: "#/components/schemas/CategoryUpdate" }
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Category' }
+              schema: { $ref: "#/components/schemas/Category" }
     delete:
       tags: [Categories]
       summary: Delete category (admin)
       security: [{ bearerAuth: [] }]
       responses:
-        '204': { description: Deleted }
+        "204": { description: Deleted }
 
   /products:
     get:
@@ -214,7 +214,7 @@ paths:
           name: offset
           schema: { type: integer, default: 0, minimum: 0 }
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -223,9 +223,9 @@ paths:
                 properties:
                   data:
                     type: array
-                    items: { $ref: '#/components/schemas/Product' }
+                    items: { $ref: "#/components/schemas/Product" }
                   paging:
-                    $ref: '#/components/schemas/Paging'
+                    $ref: "#/components/schemas/Paging"
     post:
       tags: [Products]
       summary: Create product (admin)
@@ -234,13 +234,13 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/ProductCreate' }
+            schema: { $ref: "#/components/schemas/ProductCreate" }
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Product' }
+              schema: { $ref: "#/components/schemas/Product" }
 
   /products/{id}:
     parameters:
@@ -252,12 +252,12 @@ paths:
       tags: [Products]
       summary: Get product by id
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Product' }
-        '404': { description: Not found }
+              schema: { $ref: "#/components/schemas/Product" }
+        "404": { description: Not found }
     put:
       tags: [Products]
       summary: Update product (admin)
@@ -266,19 +266,19 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/ProductUpdate' }
+            schema: { $ref: "#/components/schemas/ProductUpdate" }
       responses:
-        '200':
+        "200":
           description: Updated
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Product' }
+              schema: { $ref: "#/components/schemas/Product" }
     delete:
       tags: [Products]
       summary: Archive product (admin)
       security: [{ bearerAuth: [] }]
       responses:
-        '204': { description: Archived }
+        "204": { description: Archived }
 
   /products/{id}/images:
     parameters:
@@ -290,13 +290,13 @@ paths:
       tags: [Products]
       summary: List product images
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
-                items: { $ref: '#/components/schemas/ProductImage' }
+                items: { $ref: "#/components/schemas/ProductImage" }
     post:
       tags: [Products]
       summary: Add product image (admin)
@@ -305,13 +305,13 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/ProductImageCreate' }
+            schema: { $ref: "#/components/schemas/ProductImageCreate" }
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/ProductImage' }
+              schema: { $ref: "#/components/schemas/ProductImage" }
 
   /product-images/{imageId}:
     parameters:
@@ -324,7 +324,7 @@ paths:
       summary: Delete product image (admin)
       security: [{ bearerAuth: [] }]
       responses:
-        '204': { description: Deleted }
+        "204": { description: Deleted }
 
   /cart:
     get:
@@ -332,17 +332,17 @@ paths:
       summary: Get my cart (auto-created)
       security: [{ bearerAuth: [] }]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Cart' }
+              schema: { $ref: "#/components/schemas/Cart" }
     delete:
       tags: [Cart]
       summary: Clear cart
       security: [{ bearerAuth: [] }]
       responses:
-        '204': { description: Cleared }
+        "204": { description: Cleared }
 
   /cart/items:
     post:
@@ -353,13 +353,13 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/CartItemUpsert' }
+            schema: { $ref: "#/components/schemas/CartItemUpsert" }
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Cart' }
+              schema: { $ref: "#/components/schemas/Cart" }
 
   /cart/items/{itemId}:
     parameters:
@@ -381,17 +381,17 @@ paths:
               properties:
                 quantity: { type: integer, minimum: 1 }
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Cart' }
+              schema: { $ref: "#/components/schemas/Cart" }
     delete:
       tags: [Cart]
       summary: Remove item
       security: [{ bearerAuth: [] }]
       responses:
-        '204': { description: Removed }
+        "204": { description: Removed }
 
   /orders:
     get:
@@ -399,13 +399,13 @@ paths:
       summary: List my orders
       security: [{ bearerAuth: [] }]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
-                items: { $ref: '#/components/schemas/Order' }
+                items: { $ref: "#/components/schemas/Order" }
     post:
       tags: [Orders]
       summary: Place order from current cart
@@ -415,13 +415,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrderCreate'
+              $ref: "#/components/schemas/OrderCreate"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Order' }
+              schema: { $ref: "#/components/schemas/Order" }
 
   /orders/{id}:
     parameters:
@@ -434,12 +434,12 @@ paths:
       summary: Get my order by id
       security: [{ bearerAuth: [] }]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Order' }
-        '404': { description: Not found }
+              schema: { $ref: "#/components/schemas/Order" }
+        "404": { description: Not found }
 
   /orders/{id}/payments:
     post:
@@ -455,13 +455,13 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/PaymentCreate' }
+            schema: { $ref: "#/components/schemas/PaymentCreate" }
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Payment' }
+              schema: { $ref: "#/components/schemas/Payment" }
     get:
       tags: [Payments]
       summary: List payments for an order
@@ -472,13 +472,76 @@ paths:
           required: true
           schema: { type: integer }
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
-                items: { $ref: '#/components/schemas/Payment' }
+                items: { $ref: "#/components/schemas/Payment" }
+
+  /checkout:
+    post:
+      tags: [Orders, Payments]
+      summary: Checkout (place order and pay)
+      description: Creates an order from the current cart, processes payment, and clears the cart
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                billing_address_id: 
+                  type: integer
+                  description: ID of billing address
+                shipping_address_id: 
+                  type: integer
+                  description: ID of shipping address
+                provider: 
+                  type: string
+                  default: test
+                  example: test
+                  description: Payment provider
+      responses:
+        "201":
+          description: Order created and paid successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Order"
+                  - type: object
+                    properties:
+                      payments:
+                        type: array
+                        items: { $ref: "#/components/schemas/Payment" }
+        "400":
+          description: Empty cart
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: { type: string, example: empty_cart }
+        "409":
+          description: Insufficient stock
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: { type: string, example: insufficient_stock }
+                  product_id: { type: integer }
+        "500":
+          description: Checkout failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: { type: string, example: checkout_failed }
 
 components:
   securitySchemes:
@@ -546,7 +609,7 @@ components:
 
     AddressCreate:
       allOf:
-        - $ref: '#/components/schemas/Address'
+        - $ref: "#/components/schemas/Address"
       required:
         - line1
         - city
@@ -554,7 +617,7 @@ components:
         - country_code
 
     AddressUpdate:
-      $ref: '#/components/schemas/AddressCreate'
+      $ref: "#/components/schemas/AddressCreate"
 
     Category:
       type: object
@@ -573,7 +636,7 @@ components:
         parent_id: { type: integer, nullable: true }
 
     CategoryUpdate:
-      $ref: '#/components/schemas/CategoryCreate'
+      $ref: "#/components/schemas/CategoryCreate"
 
     Product:
       type: object
@@ -598,7 +661,7 @@ components:
         sku: { type: string }
 
     ProductUpdate:
-      $ref: '#/components/schemas/ProductCreate'
+      $ref: "#/components/schemas/ProductCreate"
 
     ProductImage:
       type: object
@@ -624,7 +687,7 @@ components:
         user_id: { type: integer }
         items:
           type: array
-          items: { $ref: '#/components/schemas/CartItem' }
+          items: { $ref: "#/components/schemas/CartItem" }
         subtotal_cents: { type: integer }
         created_at: { type: string, format: date-time }
 
@@ -660,7 +723,7 @@ components:
         shipping_address_id: { type: integer, nullable: true }
         items:
           type: array
-          items: { $ref: '#/components/schemas/OrderItem' }
+          items: { $ref: "#/components/schemas/OrderItem" }
         placed_at: { type: string, format: date-time }
 
     OrderItem:
